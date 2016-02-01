@@ -1,0 +1,24 @@
+{
+	"builders": [
+		{
+			"type": "virtualbox-iso",
+			"guest_os_type": "Oracle_64",
+			"iso_url": "file:///C:/OracleLinux-R6-U7-Server-x86_64-dvd.iso",
+			"iso_checksum": "dd7231b378f23e2e846ac78b0c5d8974a23631d5",
+			"iso_checksum_type": "sha1",
+			"ssh_username": "root",
+			"ssh_password": "oracle",
+			"http_directory": "http",
+			"boot_command": [
+				"<esc><wait>linux text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg<enter>"
+			],
+			"disk_size": 40000,
+			"shutdown_command": "shutdown -P now"
+		}
+	],
+	"post-processors": [
+		{
+			"type": "vagrant"
+		}
+	]
+}
