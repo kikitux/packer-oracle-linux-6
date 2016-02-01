@@ -1,0 +1,1 @@
+# packer-oracle-linux-6.7
