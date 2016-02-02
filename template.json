@@ -7,6 +7,7 @@
         "file:///C:/OracleLinux-R6-U7-Server-x86_64-dvd.iso",
         "http://mirror.aarnet.edu.au/pub/oraclelinux/OL6/U7/x86_64/OracleLinux-R6-U7-Server-x86_64-dvd.iso"
       ],
+      "headless" : 0,
       "iso_checksum": "dd7231b378f23e2e846ac78b0c5d8974a23631d5",
       "iso_checksum_type": "sha1",
       "ssh_username": "root",
@@ -31,6 +32,7 @@
         ]
       ],
       "hard_drive_interface": "sata",
+      "ssh_wait_timeout": "40m",
       "shutdown_command": "shutdown -P now"
     }
   ],
