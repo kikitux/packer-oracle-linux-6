@@ -1,4 +1,4 @@
-# packer-oracle-linux-6.7
+# packer-oracle-linux-6
 
 ### TODO
 - [ ] Install Guest Additions
