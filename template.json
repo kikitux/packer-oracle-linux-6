@@ -1,24 +1,72 @@
 {
-	"builders": [
-		{
-			"type": "virtualbox-iso",
-			"guest_os_type": "Oracle_64",
-			"iso_url": "file:///C:/OracleLinux-R6-U7-Server-x86_64-dvd.iso",
-			"iso_checksum": "dd7231b378f23e2e846ac78b0c5d8974a23631d5",
-			"iso_checksum_type": "sha1",
-			"ssh_username": "root",
-			"ssh_password": "oracle",
-			"http_directory": "http",
-			"boot_command": [
-				"<esc><wait>linux text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg<enter>"
-			],
-			"disk_size": 40000,
-			"shutdown_command": "shutdown -P now"
-		}
-	],
-	"post-processors": [
-		{
-			"type": "vagrant"
-		}
-	]
+  "builders": [
+    {
+      "type": "virtualbox-iso",
+      "guest_os_type": "Oracle_64",
+      "iso_urls": [
+        "file:///C:/OracleLinux-R6-U7-Server-x86_64-dvd.iso",
+        "http://mirror.aarnet.edu.au/pub/oraclelinux/OL6/U7/x86_64/OracleLinux-R6-U7-Server-x86_64-dvd.iso"
+      ],
+      "headless" : 0,
+      "iso_checksum": "dd7231b378f23e2e846ac78b0c5d8974a23631d5",
+      "iso_checksum_type": "sha1",
+      "ssh_username": "root",
+      "ssh_password": "oracle",
+      "http_directory": "http",
+      "boot_command": [
+        "<esc><wait>linux text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg<enter>"
+      ],
+      "disk_size": 40000,
+      "vboxmanage": [
+        [
+          "modifyvm",
+          "{{.Name}}",
+          "--vram",
+          "32"
+        ],
+        [
+          "modifyvm",
+          "{{.Name}}",
+          "--memory",
+          "4096"
+        ]
+      ],
+      "hard_drive_interface": "sata",
+      "ssh_wait_timeout": "40m",
+      "shutdown_command": "shutdown -P now"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "file",
+      "source": "proxy.env",
+      "destination": "/root/proxy.env"
+    },
+    {
+      "type": "shell",
+      "execute_command": "echo 'vagrant'| {{ .Vars }} sudo -E -S bash '{{.Path}}'",
+      "pause_before": "1s",
+      "scripts": [
+        "scripts/yum.sh",
+        "scripts/vagrant.sh",
+        "scripts/reboot.sh"
+      ]
+    },
+    {
+      "type": "shell",
+      "only": [
+        "virtualbox-iso"
+      ],
+      "execute_command": "echo 'vagrant'| {{ .Vars }} sudo -E -S bash '{{.Path}}'",
+      "pause_before": "5s",
+      "scripts": [
+        "scripts/virtualbox_tools.sh"
+      ]
+    }
+  ],
+  "post-processors": [
+    {
+      "type": "vagrant"
+    }
+  ]
 }
