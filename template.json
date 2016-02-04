@@ -3,11 +3,15 @@
 		{
 			"type": "virtualbox-iso",
 			"guest_os_type": "Oracle_64",
-			"iso_url": "file:///C:/OracleLinux-R6-U7-Server-x86_64-dvd.iso",
+			"iso_urls": [
+				"http://mirror.aarnet.edu.au/pub/oraclelinux/OL6/U7/x86_64/OracleLinux-R6-U7-Server-x86_64-dvd.iso",
+				"http://mirrors.kernel.org/oracle/OL6/U7/x86_64/OracleLinux-R6-U7-Server-x86_64-dvd.iso"
+			],
 			"iso_checksum": "dd7231b378f23e2e846ac78b0c5d8974a23631d5",
 			"iso_checksum_type": "sha1",
 			"ssh_username": "root",
 			"ssh_password": "oracle",
+			"ssh_timeout": "15m",
 			"http_directory": "http",
 			"boot_command": [
 				"<esc><wait>linux text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg<enter>"
