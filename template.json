@@ -19,12 +19,19 @@
 	"provisioners": [
 		{
 			"type": "shell",
+			"script": "scripts/vagrant.sh"
+		},
+		{
+			"type": "shell",
 			"scripts": [
 				"scripts/install_base_packages.sh",
-				"scripts/reboot.sh",
-				"scripts/install_guest_additions.sh",
-				"scripts/vagrant.sh"
+				"scripts/reboot.sh"
 			]
+		},
+		{
+			"type": "shell",
+			"pause_before": "10s",
+			"script": "scripts/install_guest_additions.sh"
 		}
 	],
 	"post-processors": [
