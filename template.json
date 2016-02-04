@@ -16,6 +16,17 @@
 			"shutdown_command": "shutdown -P now"
 		}
 	],
+	"provisioners": [
+		{
+			"type": "shell",
+			"scripts": [
+				"scripts/install_base_packages.sh",
+				"scripts/reboot.sh",
+				"scripts/install_guest_additions.sh",
+				"scripts/vagrant.sh"
+			]
+		}
+	],
 	"post-processors": [
 		{
 			"type": "vagrant"
