@@ -23,7 +23,8 @@
 	"provisioners": [
 		{
 			"type": "shell",
-			"script": "scripts/vagrant.sh"
+			"script": "scripts/vagrant.sh",
+			"only": ["virtualbox-iso"]
 		},
 		{
 			"type": "shell",
@@ -35,7 +36,8 @@
 		{
 			"type": "shell",
 			"pause_before": "10s",
-			"script": "scripts/install_guest_additions.sh"
+			"script": "scripts/install_guest_additions.sh",
+			"only": ["virtualbox-iso"]
 		}
 	],
 	"post-processors": [
