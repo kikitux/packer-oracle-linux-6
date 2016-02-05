@@ -4,6 +4,7 @@
 			"type": "virtualbox-iso",
 			"guest_os_type": "Oracle_64",
 			"iso_urls": [
+				"file:///OracleLinux-R6-U7-Server-x86_64-dvd.iso",
 				"http://mirror.aarnet.edu.au/pub/oraclelinux/OL6/U7/x86_64/OracleLinux-R6-U7-Server-x86_64-dvd.iso",
 				"http://mirrors.kernel.org/oracle/OL6/U7/x86_64/OracleLinux-R6-U7-Server-x86_64-dvd.iso"
 			],
