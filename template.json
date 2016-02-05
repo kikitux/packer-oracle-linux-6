@@ -43,7 +43,8 @@
 	],
 	"post-processors": [
 		{
-			"type": "vagrant"
+			"type": "vagrant",
+			"compression_level": 9
 		}
 	]
 }
