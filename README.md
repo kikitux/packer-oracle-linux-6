@@ -8,3 +8,4 @@
 - [ ] yum cleanup after provisioning
 - [ ] Update yum repos
 - [ ] Move gcc/kernel-uek-devel installation to guest additions script
+- [ ] Customize VM RAM/VRAM
