@@ -9,4 +9,3 @@ umount /mnt/iso
 rm VBoxGuestAdditions.iso
 
 yum remove -y ${PACKAGES}
-yum autoremove -y
